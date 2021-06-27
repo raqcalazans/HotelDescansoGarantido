@@ -19,7 +19,12 @@ typedef struct Funcionario
 
 typedef struct Estadia
 {
-
+    int codigo;
+    int diaEntrada;
+    int mesEntrada;
+    int diaSaida;
+    int mesSaida;
+    
 } Estadia;
 
 typedef struct Quarto

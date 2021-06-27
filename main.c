@@ -3,21 +3,23 @@
 #include <string.h>
 #include "structs.h"
 
+// CLIENTE
+
 void cadastrarCliente(Cliente *cliente){
-  printf(" ====================================================\n");
-  printf("                CADASTRO DE CLIENTE                  \n");
-  printf(" ====================================================\n\n");
-  printf("Nome: ");
-  fgets(cliente->nome, sizeof(cliente->nome), stdin);
-  printf("Endereço: ");
-  fgets(cliente->endereco, sizeof(cliente->endereco), stdin);
-  printf("Telefone: ");
-  fgets(cliente->telefone, sizeof(cliente->telefone), stdin);
-  printf("\nCódigo: ");
-  for (int i = 0; i < 10; i++){
-    printf("%d",rand() %10);
-  }
-  //fgets(cliente->codigo, sizeof(cliente->codigo), stdin);
+    printf(" ====================================================\n");
+    printf("                CADASTRO DE CLIENTE                  \n");
+    printf(" ====================================================\n\n");
+    puts("\nCódigo (sequencial e gerado automaticamente): ");
+    for (int i = 0; i < 10; i++){
+        printf("%d",rand() %10);
+    }
+    fgets(cliente->codigo, sizeof(cliente->codigo), stdin);
+    puts("Nome: ");
+    fgets(cliente->nome, sizeof(cliente->nome), stdin);
+    puts("Endereço: ");
+    fgets(cliente->endereco, sizeof(cliente->endereco), stdin);
+    puts("Telefone: ");
+    fgets(cliente->telefone, sizeof(cliente->telefone), stdin);
 }
 
 void salvarCliente(Cliente cliente)
@@ -43,20 +45,25 @@ void printCliente(Cliente cliente)
     printf("Nome: %s\n", cliente.nome);
     printf("Endereço: %s\n", cliente.endereco);
     printf("Telefone: %s\n", cliente.telefone);
-    printf("\n");
 }
 
-// ARRUMAR ISSO AQUI (QUARTOS) 
+// ARRUMAR ISSO AQUI (QUARTOS)
 void buscarCliente()
 {
+    char nome[10];
+    puts("Informe o nome do cliente:");
+    scanf("%s", &nome);
+
+    //////////////////////////////////////
+
     FILE *arq;
     arq = fopen("clientes.txt", "r");
-    
+
     printf("Informe o nome do cliente:\n");
     char cliente[20];
     scanf("%s", cliente);
     getchar();
-    
+
     while (!feof(arq))
     {
         char nome[200] = "";
@@ -106,56 +113,24 @@ void buscarCliente()
     }
 }
 
-void cadastrarFuncionario()
+// FUNCIONÁRIO
+
+void cadastrarFuncionario(Funcionario *funcionario)
 {
-    FILE *arq;
-    arq = fopen("funcionarios.txt", "a");
-
-    int codigo;
-    printf("Codigo: ");
-    scanf("%d", &codigo);
-    
-    char nome[100];
-    printf("\nNome: ");
-    scanf("%s", nome);
-
-    int telefone;
-    printf("Telefone: ");
-    scanf("%i", &telefone);
-
-    int salario;
-    printf("Salario: ");
-    scanf("%d", &salario);
-
-    fputs(nome, arq);
-    fputs("; ", arq);
-
-    fputs("Telefone: ", arq);
-    fprintf(arq, "%i", telefone);
-    fputs("; ", arq);
-    fputs("Codigo: ", arq);
-    fprintf(arq, "%i", codigo);
-    fputs("; ", arq);
-
-    fputs("Salario: ", arq);
-    fprintf(arq, "%i", salario);
-
-    fputs("\n", arq);
-
-    fclose(arq);
-
-    // Pedir ajuda pro Roque pra fazer um código sequencial que comece com F
-}
-
-void printFuncionario(Funcionario funcionario)
-{
-    printf("Nome: %s", funcionario.nome);
-    printf("Telefone: %i", funcionario.telefone);
-    printf("Cargo: %s", funcionario.cargo);
-    printf("Salário: %f", funcionario.salario);
-    printf("Código: %d", funcionario.codigo);
-
-    printf("\n");
+    printf(" ====================================================\n");
+    printf("                CADASTRO DE FUNCIONÁRIO               \n");
+    printf(" ====================================================\n\n");
+    puts("\nCódigo (sequencial e gerado automaticamente): ");
+    for (int i = 0; i < 10; i++){
+        printf("%d",rand() %10);
+    }
+    fgets(cliente->codigo, sizeof(cliente->codigo), stdin);
+    puts("Nome: ");
+    fgets(funcionario->nome, sizeof(funcionario->nome), stdin);
+    puts("Endereço: ");
+    fgets(funcionario->endereco, sizeof(funcionario->endereco), stdin);
+    puts("Telefone: ");
+    fgets(funcionario->telefone, sizeof(funcionario->telefone), stdin);
 }
 
 void salvarFuncionario(Funcionario funcionario)
@@ -175,8 +150,22 @@ void carregarFuncionario(int a, Funcionario *funcionario)
     fclose(arq);
 }
 
+void printFuncionario(Funcionario funcionario)
+{
+    printf("Código: %d\n", funcionario.codigo);
+    printf("Nome: %s\n", funcionario.nome);
+    printf("Telefone: %i\n", funcionario.telefone);
+    printf("Cargo: %s\n", funcionario.cargo);
+    printf("Salário: %f\n", funcionario.salario);
+}
+
 void buscarFuncionario()
 {
+
+
+
+
+    ///////////////////////////////////////////
     FILE *arq;
     arq = fopen("funcionarios.txt", "r");
     printf("Informe o nome do funcionario:\n");
@@ -216,11 +205,35 @@ void buscarFuncionario()
     }
 }
 
-void cadastrarHospedagem()
+void cadastrarEstadia(Funcionario *funcionario)
 {
     printf(" ====================================================\n");
-    printf("                CADASTRO DE HOSPEDAGEM               \n");
+    printf("                  CADASTRO DE ESTADIA                \n");
     printf(" ====================================================\n");
+
+
+
+    char nome[20];
+    puts("Informe o nome do cliente:");
+    scanf("%s", nome);
+
+    if()
+
+
+    puts("\nCódigo (sequencial e gerado automaticamente): ");
+    for (int i = 0; i < 10; i++){
+        printf("%d",rand() %10);
+    }
+    fgets(funcionario->codigo, sizeof(funcionario->codigo), stdin);
+    puts("Nome: ");
+    fgets(funcionario->nome, sizeof(funcionario->nome), stdin);
+    puts("Endereço: ");
+    fgets(funcionario->endereco, sizeof(funcionario->endereco), stdin);
+    puts("Telefone: ");
+    fgets(funcionario->telefone, sizeof(funcionario->telefone), stdin);
+
+
+
     FILE *arq;
     arq = fopen("hospedagem.txt", "a");
 
@@ -287,7 +300,6 @@ void cadastrarHospedagem()
 
 void sair()
 {
-    Cliente cliente;
     return;
 }
 
@@ -295,39 +307,26 @@ void buscarHospedagem(){}
 
 void cadastrarQuarto(){}
 
-void buscarQuarto(){
-  Cliente cliente;
-}
+void buscarQuarto(){}
 
 void menu()
 {
-  Cliente cliente;
     int opt = 10;
     while (opt != 0)
     {
-      Cliente cliente;
-        printf("\nEscolha a opção: \n0-Sair, \n1-Cadastrar cliente, \n2-Buscar cliente \n3-Cadastrar funcionário \n4-Buscar funcionário \n5-Cadastrar estadia \n6-Buscar estadia \n7-Cadastrar quarto \n8-Buscar quarto\n");
-        
-        Cliente c1; 
+        printf("\nEscolha a opção: \n\n0-Sair, \n1-Cadastrar cliente, \n2-Buscar cliente \n3-Cadastrar funcionário \n4-Buscar funcionário \n5-Cadastrar estadia \n6-Buscar estadia \n7-Cadastrar quarto \n8-Buscar quarto\n");
         scanf("%d", &opt);
-        Cliente c2;
         getchar();
-        Cliente c3;
         switch (opt)
         {
-          Cliente c4;
         case 0:
-          Cliente c5;
-            //sair();
-            //break;
+            sair();
+            break;
         case 1:
-        Cliente c8;
-      
             Cliente c1;
-            //cadastrarCliente(c1);
+            cadastrarCliente(c1);
             break;
         case 2:
-          Cliente c9;
             buscarCliente();
             break;
         case 3:
@@ -357,7 +356,7 @@ void menu()
 
 int main()
 {
-    printf("\n\n\t\t\t\t Hotel Descanso Garantido \n\n\n");
+    printf("\n\n\t\t\t Hotel Descanso Garantido \n\n");
     menu();
     return 0;
 }
