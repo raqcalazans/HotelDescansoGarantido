@@ -14,7 +14,7 @@ typedef struct Funcionario
     int telefone;
     char cargo[20];
     float salario;
-    
+
 } Funcionario;
 
 typedef struct Estadia
@@ -24,10 +24,19 @@ typedef struct Estadia
     int mesEntrada;
     int diaSaida;
     int mesSaida;
-    
+    int quantidadeDiarias;
+    int codigoCliente;
+    int quantidadeHospedes;
+    int numeroQuarto;
+
+
 } Estadia;
 
 typedef struct Quarto
 {
+    int numeroQuarto;
+    int quantidadeHospedes;
+    float valorDiaria;
+    bool status;
 
 } Quarto;

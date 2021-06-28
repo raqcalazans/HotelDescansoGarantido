@@ -9,9 +9,9 @@ void cadastrarCliente(Cliente *cliente){
     printf(" ====================================================\n");
     printf("                CADASTRO DE CLIENTE                  \n");
     printf(" ====================================================\n\n");
-    puts("\nCódigo (sequencial e gerado automaticamente): ");
+    puts("\nCódigo: ");
     for (int i = 0; i < 10; i++){
-        printf("%d",rand() %10);
+        printf("%d",rand() % 10);
     }
     fgets(cliente->codigo, sizeof(cliente->codigo), stdin);
     puts("Nome: ");
@@ -47,70 +47,86 @@ void printCliente(Cliente cliente)
     printf("Telefone: %s\n", cliente.telefone);
 }
 
-// ARRUMAR ISSO AQUI (QUARTOS)
-void buscarCliente()
+// ARRUMAR ISSO AQUI, NÃO SOUBEMOS CONSULTAR OS ARQUIVOS
+Cliente buscarCliente()
 {
-    char nome[10];
+    char nome[20];
     puts("Informe o nome do cliente:");
-    scanf("%s", &nome);
+    scanf("%s", nome);
 
-    //////////////////////////////////////
+    Cliente cliente;
 
     FILE *arq;
-    arq = fopen("clientes.txt", "r");
+    arq = fopen("Cliente.db", "rb");
 
-    printf("Informe o nome do cliente:\n");
-    char cliente[20];
-    scanf("%s", cliente);
-    getchar();
+    //fscanf(arq, “%i”, &a);
 
-    while (!feof(arq))
-    {
-        char nome[200] = "";
-        fgets(nome, sizeof(nome), arq);
-        int boolean = 0;
-        for (int i = 0; i < strlen(cliente); i++)
-        {
-            if (cliente[i] != nome[i])
-            {
-                boolean = 1;
-            }
-        }
-        if (boolean != 1)
-        {
-            char aux[] = ";";
-            printf("O hóspede cadastrado no sistema é:\n");
-            printf(" ");
-            int i = 0;
-            for (i = 0; i < strlen(nome); i++)
-            {
-                if (nome[i] == aux[0])
-                {
-                    printf("\n");
-                }
-                else
-                {
-                    printf("%c", nome[i]);
-                }
-            }
-            char opcoes[] = "123";
-
-            char hospedes = nome[strlen(nome) - 2];
-            if (hospedes == opcoes[0] || hospedes == opcoes[1])
-            {
-                printf("                               Quarto duplo disponível                               ");
-            }
-            else if (hospedes == opcoes[2])
-            {
-                printf("                              Quarto triplo disponível                              ");
-            }
-            else
-            {
-                printf("                        Quarto quadruplo disponível                     ");
-            }
-            printf("\n\n");
+    for(int i = 0; i <= sizeof(arq); i++) {
+        if(cliente.nome == nome) {
+            return cliente;
+        } else {
+            puts("Cliente não encontrado");
+            return;
         }
     }
+
+    ///////////ANTES DE USAR SCRUCT ESTÁVAMOS FAZENDO ASSIM//////////
+
+    //FILE *arq;
+    //arq = fopen("clientes.txt", "r");
+
+    //printf("Informe o nome do cliente:\n");
+    //char cliente[20];
+    //scanf("%s", cliente);
+    //getchar();
+
+    //while (!feof(arq))
+    //{
+    //    char nome[200] = "";
+    //    fgets(nome, sizeof(nome), arq);
+    //    int boolean = 0;
+    //    for (int i = 0; i < strlen(cliente); i++)
+    //    {
+    //        if (cliente[i] != nome[i])
+    //        {
+    //            boolean = 1;
+    //        }
+    //    }
+    //    if (boolean != 1)
+    //    {
+    //        char aux[] = ";";
+    //        printf("O hóspede cadastrado no sistema é:\n");
+    //        printf(" ");
+    //        int i = 0;
+    //        for (i = 0; i < strlen(nome); i++)
+    //        {
+    //            if (nome[i] == aux[0])
+    //            {
+    //                printf("\n");
+    //            }
+    //            else
+    //            {
+    //                printf("%c", nome[i]);
+    //            }
+    //        }
+    //        char opcoes[] = "123";
+    //
+    //        char hospedes = nome[strlen(nome) - 2];
+    //        if (hospedes == opcoes[0] || hospedes == opcoes[1])
+    //        {
+    //            printf("                               Quarto duplo disponível                               ");
+    //        }
+    //        else if (hospedes == opcoes[2])
+    //        {
+    //            printf("                              Quarto triplo disponível                              ");
+    //        }
+    //        else
+    //        {
+    //            printf("                        Quarto quadruplo disponível                     ");
+    //        }
+    //        printf("\n\n");
+    //    }
+    //}
 }
 
 // FUNCIONÁRIO
@@ -161,141 +177,141 @@ void printFuncionario(Funcionario funcionario)
 
 void buscarFuncionario()
 {
-
-
-
-
-    ///////////////////////////////////////////
-    FILE *arq;
-    arq = fopen("funcionarios.txt", "r");
-    printf("Informe o nome do funcionario:\n");
-    char funcionario[20];
-    scanf("%s", funcionario);
-    getchar();
-    while (!feof(arq))
-    {
-        char nome[200] = "";
-        fgets(nome, sizeof(nome), arq);
-        int boolean = 0;
-        for (int i = 0; i < strlen(funcionario); i++)
-        {
-            if (funcionario[i] != nome[i])
-            {
-                boolean = 1;
-            }
-        }
-        if (boolean != 1)
-        {
-            char aux[] = ";";
-            printf("\nO funcionario cadastrado no sistema é:\n");
-            printf(" ");
-            int i = 0;
-            for (i = 0; i < strlen(nome); i++)
-            {
-                if (nome[i] == aux[0])
-                {
-                    printf("\n");
-                }
-                else
-                {
-                    printf("%c", nome[i]);
-                }
-            }
-        }
-    }
+    ///////////ANTES DE USAR SCRUCT ESTÁVAMOS FAZENDO ASSIM//////////
+    //FILE *arq;
+    //arq = fopen("funcionarios.txt", "r");
+    //printf("Informe o nome do funcionario:\n");
+    //char funcionario[20];
+    //scanf("%s", funcionario);
+    //getchar();
+    //while (!feof(arq))
+    //{
+    //    char nome[200] = "";
+    //    fgets(nome, sizeof(nome), arq);
+    //    int boolean = 0;
+    //    for (int i = 0; i < strlen(funcionario); i++)
+    //    {
+    //        if (funcionario[i] != nome[i])
+    //        {
+    //            boolean = 1;
+    //        }
+    //    }
+    //    if (boolean != 1)
+    //    {
+    //        char aux[] = ";";
+    //        printf("\nO funcionario cadastrado no sistema é:\n");
+    //        printf(" ");
+    //        int i = 0;
+    //        for (i = 0; i < strlen(nome); i++)
+    //        {
+    //            if (nome[i] == aux[0])
+    //            {
+    //                printf("\n");
+    //            }
+    //            else
+    //            {
+    //                printf("%c", nome[i]);
+    //            }
+    //        }
+    //    }
+    //}
 }
 
-void cadastrarEstadia(Funcionario *funcionario)
+void cadastrarEstadia(Estadia *estadia)
 {
     printf(" ====================================================\n");
     printf("                  CADASTRO DE ESTADIA                \n");
     printf(" ====================================================\n");
 
+    Cliente cliente;
+    cliente = buscarCliente();
 
-
-    char nome[20];
-    puts("Informe o nome do cliente:");
-    scanf("%s", nome);
-
-    if()
-
-
-    puts("\nCódigo (sequencial e gerado automaticamente): ");
+    puts("\nCódigo da estadia: ");
     for (int i = 0; i < 10; i++){
         printf("%d",rand() %10);
     }
-    fgets(funcionario->codigo, sizeof(funcionario->codigo), stdin);
-    puts("Nome: ");
-    fgets(funcionario->nome, sizeof(funcionario->nome), stdin);
-    puts("Endereço: ");
-    fgets(funcionario->endereco, sizeof(funcionario->endereco), stdin);
-    puts("Telefone: ");
-    fgets(funcionario->telefone, sizeof(funcionario->telefone), stdin);
-
-
-
-    FILE *arq;
-    arq = fopen("hospedagem.txt", "a");
-
-    char nome[100];
-    printf("\nNome do re: ");
+    fgets(estadia->codigo, sizeof(estadia->codigo), stdin);
+    puts("Dia de entrada: ");
+    fgets(estadia->diaEntrada, sizeof(funcionario->diaEntrada), stdin);
+    puts("Mês de entrada: ");
+    fgets(estadia->mesEntrada, sizeof(estadia->mesEntrada), stdin);
+    puts("Dia de saída: ");
+    fgets(estadia->diaSaida, sizeof(estadia->diaSaida), stdin);
+    puts("Mês de saida: ");
+    fgets(estadia->mesSaida, sizeof(estadia->mesSaida), stdin);
+    puts("Quantidade de diárias: ");
+    printf("%i", (estadia.diaSaida - estadia.diaInicio) + (estadia.mesSaida - estadia.mesEntrada) * 30));
+    fgets(estadia->quantidadeDiarias, sizeof(estadia->quantidadeDiarias), stdin);
+    char nome[20];
+    puts("Qual o nome do cliente?");
     scanf("%s", nome);
 
-    int totalHospedes;
-    printf("total Hospedes: ");
-    scanf("%d", &totalHospedes);
+    puts("Código do cliente: ");
+    print("%i", cliente.codigo);
+    fgets(estadia->codigoCliente, sizeof(estadia->codigoCliente), stdin);
+    puts("Quantidade de hóspedes:");
+    fgets(estadia->quantidadeHospedes, sifeof(estadia->quantidadeHospedes), stdin);
+    puts("Número do quarto: ");
+    printf();
+    fgets(estadia->telefone, sizeof(estadia->telefone), stdin);
+}
 
-    int diaInicio;
-    printf("Dia inicio: ");
-    scanf("%d", &diaInicio);
+void salvarEstadia(Estadia estadia)
+{
+    FILE *arq;
+    arq = fopen("Estadia.db", "ab");
+    fwrite(&estadia, sizeof(estadia), 1, arq);
+    fclose(arq);
+}
 
-    int mesInicio;
-    printf("Mes inicio: ");
-    scanf("%d", &mesInicio);
+void carregarEstadia(int a, Estadia *estadia)
+{
+    FILE *arq;
+    arq = fopen("Estadia.db", "rb");
+    fseek(arq, sizeof(Estadia) * a, SEEK_SET);
+    fread(estadia, sizeof(Estadia), 1, arq);
+    fclose(arq);
+}
 
-    int diaFim;
-    printf("Dia fim: ");
-    scanf("%d", &diaFim);
+void printEstadia(Estadia estadia)
+{
+    printf("Código da estadia: %d\n", estadia.codigo);
+    printf("Data de entrada: %i/%i\n", estadia.diaEntrada, estadia.mesEntrada);
+    printf("Data de saída: %i/%i\n", estadia.diaSaida, estadia.mesSaida);
+    printf("Quantidade de diárias: %i\n", estadia.quantidadeDiarias);
+    printf("Código do cliente: %f\n", estadia.codigoCliente);
+    printf("Número do quarto: %f\n", estadia.numeroQuarto);
+}
 
-    int mesFim;
-    printf("Mes fim: ");
-    scanf("%d", &mesFim);
+void cadastrarQuarto(Quarto *quarto)
+{
+    printf(" ====================================================\n");
+    printf("                  CADASTRO DE QUARTO                 \n");
+    printf(" ====================================================\n");
 
-    fputs(nome, arq);
-    fputs("; ", arq);
+    puts("\nNúmero do quarto: ");
+    fgets(quarto->numeroQuarto, sizeof(quarto->numeroQuarto), stdin);
+    puts("Quantidade de hóspedes que comporta: ");
+    fgets(quarto->quantidadeHospedes, sizeof(quarto->quantidadeHospedes), stdin);
+    puts("Valor da diária: ");
+    fgets(quarto->valorDiaria, sizeof(quarto->valorDiaria), stdin);
+    puts("Status (0 = desocupado, 1 = ocupado): ");
+    fgets(quarto->status, sizeof(quarto->status), stdin);
+}
 
-    fputs("Entrada: ", arq);
-    fprintf(arq, "%i", diaInicio);
-    fputs("/", arq);
-    fprintf(arq, "%i", mesInicio);
-    fputs("; ", arq);
+float fecharEstadia()
+{
+    char nome[20];
+    puts("Qual o nome do cliente:");
+    scanf("%s", nome);
 
-    fputs("Saida: ", arq);
-    fprintf(arq, "%i", diaFim);
-    fputs("/", arq);
-    fprintf(arq, "%i", mesFim);
-    fputs("; ", arq);
+    float totalEstadia, valorDiaria;
 
-    int dias = (diaFim - diaInicio) + (mesFim - mesInicio) * 30;
-    fputs("Total de dias: ", arq);
-    fprintf(arq, "%i", dias);
-    fputs("; ", arq);
-
-    fputs("Total de Hospedes: ", arq);
-    fprintf(arq, "%i", totalHospedes);
-    fputs("; ", arq);
-
-                //vitor
-    float mult, valorDiaria;
-    // calcular valor total pago pelas estadias
     printf("Digite o valor de cada diária: ");
     scanf("%f", &valorDiaria);
 
-    mult = dias * valorDiaria;
-    fputs("Total da estadia: R$", arq);
-    fprintf(arq, "%.2f", mult);
-    fputs("\n", arq);
-    fclose(arq);
+    totalEstadia = estadia.quantidadeDiarias * valorDiaria;
+    printf("Total da estadia: R$%.2f", &totalEstadia);
 }
 
 void sair()
@@ -303,18 +319,12 @@ void sair()
     return;
 }
 
-void buscarHospedagem(){}
-
-void cadastrarQuarto(){}
-
-void buscarQuarto(){}
-
 void menu()
 {
     int opt = 10;
     while (opt != 0)
     {
-        printf("\nEscolha a opção: \n\n0-Sair, \n1-Cadastrar cliente, \n2-Buscar cliente \n3-Cadastrar funcionário \n4-Buscar funcionário \n5-Cadastrar estadia \n6-Buscar estadia \n7-Cadastrar quarto \n8-Buscar quarto\n");
+        printf("\nEscolha a opção: \n\n0-Sair, \n1-Cadastrar cliente, \n2-Buscar cliente \n3-Cadastrar funcionário \n4-Buscar funcionário \n5-Cadastrar estadia \n6-Cadastrar quarto \n7-Fechar uma estadia");
         scanf("%d", &opt);
         getchar();
         switch (opt)
@@ -336,27 +346,23 @@ void menu()
             buscarFuncionario();
             break;
         case 5:
-            cadastrarHospedagem();
-            break;
-        case 6:
-            buscarHospedagem();
-            break;
-        case 7:
             cadastrarQuarto();
             break;
-        case 8:
-            buscarQuarto();
+        case 6:
+            fecharEstadia();
             break;
+        case 7:
+            fecharEstadia();
         default:
-            puts("Opção invalida. Escolha de 0 a 8.");
+            puts("Opção invalida. Escolha de 0 a 7.");
         }
-        opt = 8;
+        opt = 7;
     }
 }
 
 int main()
 {
-    printf("\n\n\t\t\t Hotel Descanso Garantido \n\n");
+    printf("\n\n\t\t Hotel Descanso Garantido \n\n");
     menu();
     return 0;
 }
